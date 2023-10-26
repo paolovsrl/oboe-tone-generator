@@ -11,11 +11,8 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.plus
 
-
+//Improvement only for Jetpack compose. Now the c++ is in a separate module that has been included.
 object AudioPlayer : DefaultLifecycleObserver {
-
-    external fun startAudioStreamNative(): Int
-    external fun stopAudioStreamNative(): Int
 
 
     // Used to load the 'nativeaudiotest' library on application startup.
@@ -31,15 +28,19 @@ object AudioPlayer : DefaultLifecycleObserver {
     val playerState = _playerState.asStateFlow()
 
 
+    var toneGenerator = com.omsi.tonegenerator.CustomToneGenerator
+
+
+
     fun setPlaybackEnabled(isEnabled:Boolean) {
         // Start (and stop) Oboe from a coroutine in case it blocks for too long.
         // If the AudioServer has died it may take several seconds to recover.
         // That can cause an ANR if we are starting audio from the main UI thread.
         coroutineScope.launch {
             val result = if (isEnabled) {
-                startAudioStreamNative()
+                toneGenerator.startAudioStreamNative()
             } else {
-                stopAudioStreamNative()
+                toneGenerator.stopAudioStreamNative()
             }
 
             val newUiState = if (result == 0) {
