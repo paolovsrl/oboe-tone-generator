@@ -9,6 +9,7 @@ public object CustomToneGenerator {
 
 
     external fun startAudioStreamNative(): Int
+    external fun setAudioStreamNativeFrequency(frequency:Float)
     external fun stopAudioStreamNative(): Int
 
 }

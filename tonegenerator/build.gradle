@@ -59,7 +59,7 @@ afterEvaluate {
             release(MavenPublication) {
                 groupId 'com.android.lib'
                 artifactId 'custom-tone-maker'
-                version '1.0'
+                version '1.0.2' //reduced log. still to be published
                 from components.getByName('release')
             }
         }

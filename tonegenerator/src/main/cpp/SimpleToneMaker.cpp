@@ -47,6 +47,9 @@ oboe::Result SimpleToneMaker::close(){
     return mStream->close();
 }
 
+void SimpleToneMaker::setToneFrequency(float frequency){
+    mFrequency = frequency;
+}
 
 
 
@@ -76,7 +79,6 @@ oboe::DataCallbackResult  SimpleToneMaker::MyDataCallback::onAudioReady(
     //Fill buffer:
     int numSamples = numFrames * kChannelCount;
     for (int i = 0; i<numSamples; i++){
-        //TODO: get sample rate and create square wave
 
         //Increments the phase, handling wrap around.
         phase_ += mPhaseIncrement;
@@ -93,14 +95,9 @@ oboe::DataCallbackResult  SimpleToneMaker::MyDataCallback::onAudioReady(
 void SimpleToneMaker::MyErrorCallback::onErrorAfterClose(
         oboe::AudioStream *oboeStream, oboe::Result error
 ){
-    __android_log_print(ANDROID_LOG_INFO, TAG, "%s() -error = %s", oboe::convertToText(error));
+    //__android_log_print(ANDROID_LOG_INFO, TAG, "%s() -error = %s", oboe::convertToText(error));
     //Try to open and start a new stream after a disconnect.
     if(mParent->open() == oboe::Result::OK){
         mParent->start();
     }
-}
-
-void setToneFrequency(float frequency){
-    if(frequency>100 & frequency<22000)
-        mFrequency = frequency;
 }
