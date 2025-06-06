@@ -12,8 +12,6 @@ android {
 
         minSdk 23
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
 
     }
 
@@ -68,7 +66,7 @@ afterEvaluate {
             maven {
                 name = 'myRepo'
                 //url = layout.buildDirectory.dir("repo")
-                url = "D:\\AndroidStudioProjects\\OMSI\\repo-public"
+                url = "C:\\projects\\AndroidStudio\\repos\\mvn-repo-public"
             }
         }
     }
