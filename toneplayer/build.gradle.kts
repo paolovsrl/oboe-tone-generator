@@ -9,7 +9,7 @@ android {
     compileSdk = 35
 
     defaultConfig {
-        minSdk = 30
+        minSdk = 23
 
         consumerProguardFiles("consumer-rules.pro")
         externalNativeBuild {
@@ -56,7 +56,7 @@ afterEvaluate {
             create<MavenPublication>("release") { // Use create<MavenPublication>("name")
                 groupId = "com.android.lib"
                 artifactId = "custom-wav-player"
-                version = "1.0.0"
+                version = "1.0.2"
 
                 // For Android libraries, 'release' component is usually the one you want.
                 // If it's a generic Java/Kotlin library, it might be 'java'.

@@ -85,7 +85,7 @@ class MainActivity : ComponentActivity() {
                             LaunchedEffect("") {
                                 coroutineScope.launch {
                                     delay(1000)
-                                    tonePlayer.setGain(toneIndex, 2.0f) //0-2
+                                   // tonePlayer.setGain(toneIndex, 2.0f) //0-2
                                 }
 
                             }

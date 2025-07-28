@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "com.omsi.nativeaudiotest"
-        minSdk = 30
+        minSdk = 23
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
